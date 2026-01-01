@@ -86,7 +86,6 @@ async function fetchPrices(coinIds, vsCurrency) {
   const url = `http://robertindexserver-production.up.railway.app/api/prices?ids=${
     ids
   }&vs_currencies=${encodeURIComponent(vsCurrency)}`;
-  robertindexserver-production.up.railway.app
   console.log(url)
 
   const res = await fetch(url);
