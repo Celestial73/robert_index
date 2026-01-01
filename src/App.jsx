@@ -83,10 +83,10 @@ function formatTime(ts) {
  */
 async function fetchPrices(coinIds, vsCurrency) {
   const ids = coinIds.join(",");
-  const url = `robertindexserver-production.up.railway.app/api/prices?ids=${
+  const url = `http://robertindexserver-production.up.railway.app/api/prices?ids=${
     ids
   }&vs_currencies=${encodeURIComponent(vsCurrency)}`;
-
+  robertindexserver-production.up.railway.app
   console.log(url)
 
   const res = await fetch(url);
