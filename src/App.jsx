@@ -219,8 +219,14 @@ export default function App() {
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
       {/* Full-width container (no max-width) */}
       <div className="mx-auto max-w-7xl w-full px-4 py-8">
+        
         <header className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
+          <img
+            src="rich_bob_5.png"   // put image in /public
+            alt="Index badge"
+            className="absolute -top-5 left-0 w-80 h-80 object-contain pointer-events-none z-50"
+          />
             <h1 className="text-2xl font-semibold tracking-tight">{INDEX_NAME}</h1>
             <p className="text-sm text-neutral-400 py-4">
             Tryin' to start a piggy bank for you so you could go to college.
@@ -239,6 +245,7 @@ export default function App() {
         </header>
 
         <section className="mt-6 grid gap-4 sm:grid-cols-3">
+          
           <div className="rounded-2xl bg-neutral-900/60 p-4 shadow">
             <div className="text-xs text-neutral-400">Basket value ({VS.toUpperCase()})</div>
             <div className="mt-1 text-2xl font-semibold">
@@ -272,13 +279,19 @@ export default function App() {
           </div>
         </section>
 
-        <section className="mt-6 rounded-2xl bg-neutral-900/60 p-4 shadow w-full">
+        <section className="mt-6 rounded-2xl bg-neutral-900/60 p-4 shadow w-full relative">
+        <img
+            src="rich_bob_4.png"   // put image in /public
+            alt="Index badge"
+            className="absolute -top-60 -right-48 w-120 h-120 object-contain pointer-events-none"
+          />
           <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-medium">Цена индекса, USD </div>
             <div className="text-xs text-neutral-400">Points stored locally (last 500)</div>
           </div>
 
           <div className="h-80 w-full">
+
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData} margin={{ top: 10, right: 18, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
@@ -307,10 +320,15 @@ export default function App() {
             </ResponsiveContainer>
           </div>
         </section>
-
-        <section className="mt-6 rounded-2xl bg-neutral-900/60 p-4 text-sm text-neutral-200 shadow w-full">
+        <img
+            src="rich_bob_2.png"   // put image in /public
+            alt="Index badge"
+            className="absolute -bottom-60 left-0 w-100 h-100 object-contain pointer-events-none "
+          />
+        <section className="mt-6 rounded-2xl bg-neutral-900/60 p-4 text-sm text-neutral-200 shadow w-full relative z-20">
+ 
           <div className="font-medium">Что в мешочке</div>
-          <div className="mt-2 grid gap-2 sm:grid-cols-3">
+          <div className="mt-2 grid gap-2 sm:grid-cols-3 z-20">
             {BASKET.map((asset) => {
               const price = lastPrices?.[asset.id];
               const value = typeof price === "number" ? price * asset.amount : null;
