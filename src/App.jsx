@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+
 /**
  * CRYPTO BASKET INDEX (fixed quantities)
  *
@@ -47,14 +48,13 @@ const VS = "usd";
 
 // 15 minutes
 const REFRESH_MS = 15 * 60 * 1000;
-
 // Optional: set in your env as VITE_COINGECKO_KEY=...
 // CoinGecko docs mention `x-cg-demo-api-key` for some uses.
-const COINGECKO_KEY = import.meta?.env?.VITE_COINGECKO_KEY;
-console.log(COINGECKO_KEY, "COINGECKO_KEY");
-console.log( "COINGECKO_KEY");
 
-console.log(import.meta?.env, "import.meta?.env");
+const SAMPLEVAR = import.meta.env?.VITE_SAMPLE;
+const COINGECKO_KEY = import.meta.env?.VITE_COINGECKO_KEY;
+
+
 
 function nowIsoMinute() {
   const d = new Date();
@@ -83,7 +83,7 @@ function formatTime(ts) {
  */
 async function fetchPrices(coinIds, vsCurrency) {
   const ids = coinIds.join(",");
-  const url = `https://robertindexserver-production.up.railway.app/api/prices?ids=${
+  const url = `${import.meta?.env?.VITE_PRICES_BASE_URL}/api/prices?ids=${
     ids
   }&vs_currencies=${encodeURIComponent(vsCurrency)}`;
   console.log(url)
@@ -120,7 +120,7 @@ function computeBasketValue(pricesById, basket) {
   return total;
 }
 
-const STORAGE_KEY = "crypto_basket_timeseries_v2";
+const STORAGE_KEY = "crypto_basket_timeseries_v3";
 
 function loadSeries() {
   try {
@@ -218,15 +218,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
       {/* Full-width container (no max-width) */}
-      <div className="mx-auto max-w-7xl w-full px-4 py-8">
-        
+      <div className="mx-auto max-w-7xl w-full px-4 py-8 relative">
+      <img
+            src="rich_bob_1.png"   // put image in /public
+            alt="Index badge"
+            className="absolute top-0 -left-60 w-100 h-100 object-contain pointer-events-none -scale-x-100"
+          />
         <header className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-          <img
-            src="rich_bob_5.png"   // put image in /public
-            alt="Index badge"
-            className="absolute -top-5 left-0 w-80 h-80 object-contain pointer-events-none z-50"
-          />
             <h1 className="text-2xl font-semibold tracking-tight">{INDEX_NAME}</h1>
             <p className="text-sm text-neutral-400 py-4">
             Tryin' to start a piggy bank for you so you could go to college.
@@ -303,6 +302,13 @@ export default function App() {
                   tickFormatter={(v) => Number(v).toLocaleString(undefined, { maximumFractionDigits: 0 })}
                 />
                 <Tooltip
+                 contentStyle={{
+                  backgroundColor: "#111",
+                  border: "1px solid #333",
+                  borderRadius: 8,
+                  color: "#fff",
+                  fontSize: 12,
+                }}
                   formatter={(v) => [Number(v).toLocaleString(undefined, { maximumFractionDigits: 2 }), VS.toUpperCase()]}
                   labelFormatter={(label, payload) => {
                     const ts = payload?.[0]?.payload?.ts;
@@ -320,13 +326,13 @@ export default function App() {
             </ResponsiveContainer>
           </div>
         </section>
+
+        <section className="mt-6 rounded-2xl bg-neutral-900/60 p-4 text-sm text-neutral-200 shadow w-full relative z-20">
         <img
             src="rich_bob_2.png"   // put image in /public
             alt="Index badge"
-            className="absolute -bottom-60 left-0 w-100 h-100 object-contain pointer-events-none "
+            className="absolute bottom-0 -left-65 w-100 h-100 object-contain pointer-events-none z-10 "
           />
-        <section className="mt-6 rounded-2xl bg-neutral-900/60 p-4 text-sm text-neutral-200 shadow w-full relative z-20">
- 
           <div className="font-medium">Что в мешочке</div>
           <div className="mt-2 grid gap-2 sm:grid-cols-3 z-20">
             {BASKET.map((asset) => {
