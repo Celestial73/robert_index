@@ -326,7 +326,7 @@ export default function App() {
         <img
             src="rich_bob_2.png"   // put image in /public
             alt="Index badge"
-            className="hidden lg:block absolute -top-60 -right-48 w-120 h-120 object-contain pointer-events-none"
+            className="hidden lg:block absolute top-0 -left-70 w-100 h-100 object-contain pointer-events-none"
 />
           <div className="font-medium">Что в мешочке</div>
           <div className="mt-2 grid gap-2 sm:grid-cols-3 z-20">
