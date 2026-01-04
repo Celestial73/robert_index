@@ -30,18 +30,13 @@ const INDEX_NAME = "Индекс Роберта";
 // Fixed quantities in the basket (NOT weights). These do NOT need to sum to anything.
 // CoinGecko uses “coin IDs” like: bitcoin, ethereum, solana, etc.
 const BASKET = [
-  { id: "bitcoin", amount: 0.0001 },
-  { id: "ethereum", amount: 0.003 },
-  { id: "solana", amount: 0.1 },
-  { id: "monero", amount: 0.03 },
-  { id: "meteora", amount: 50 },
-  { id: "dogecoin", amount: 50 },
-  { id: "cardano", amount: 20 },
-  { id: "cosmos", amount: 4 },
-  { id: "floki", amount: 150000 },
-  { id: "jupiter-perpetuals-liquidity-provider-token", amount: 3 },
-  { id: "digibyte", amount: 1000 },
-  { id: "avalanche-2", amount: 1 },
+  { id: "dogecoin", amount: 132 }, 
+  { id: "digibyte", amount: 4507 },
+  { id: "avalanche-2", amount: 1.98 },
+  { id: "meteora", amount: 40.3556 },
+  { id: "solana", amount: 0.11 },
+  { id: "cardano", amount: 45 },
+  { id: "cosmos", amount: 10 },
 ];
 
 const VS = "usd";
@@ -120,7 +115,7 @@ function computeBasketValue(pricesById, basket) {
   return total;
 }
 
-const STORAGE_KEY = "crypto_basket_timeseries_v3";
+const STORAGE_KEY = "crypto_basket_timeseries_v4";
 
 function loadSeries() {
   try {
