@@ -217,7 +217,7 @@ export default function App() {
       <img
             src="rich_bob_1.png"   // put image in /public
             alt="Index badge"
-            className="absolute top-0 -left-60 w-100 h-100 object-contain pointer-events-none -scale-x-100"
+            className="hidden lg:block absolute top-0 -left-60 w-100 h-100 object-contain pointer-events-none -scale-x-100"
           />
         <header className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -277,7 +277,7 @@ export default function App() {
         <img
             src="rich_bob_4.png"   // put image in /public
             alt="Index badge"
-            className="absolute -top-60 -right-48 w-120 h-120 object-contain pointer-events-none"
+            className="hidden lg:block absolute -top-60 -right-48 w-120 h-120 object-contain pointer-events-none"
           />
           <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-medium">Цена индекса, USD </div>
@@ -326,8 +326,8 @@ export default function App() {
         <img
             src="rich_bob_2.png"   // put image in /public
             alt="Index badge"
-            className="absolute bottom-0 -left-65 w-100 h-100 object-contain pointer-events-none z-10 "
-          />
+            className="hidden lg:block absolute -top-60 -right-48 w-120 h-120 object-contain pointer-events-none"
+/>
           <div className="font-medium">Что в мешочке</div>
           <div className="mt-2 grid gap-2 sm:grid-cols-3 z-20">
             {BASKET.map((asset) => {
